@@ -1,0 +1,8 @@
+usuario para entrar al sistema
+joe
+asdf123
+
+superusuario para entrar en /admin
+fer
+asdf123
+voy en 2:02
