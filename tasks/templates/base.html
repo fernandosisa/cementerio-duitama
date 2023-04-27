@@ -13,40 +13,6 @@
 
 <body>
 
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown link
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
     <nav style="background-color: #474b4e;" class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="/">Sistema Cementerio Duitama</a>
@@ -63,7 +29,47 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Dropdown link
+                            Bóveda
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tasks/create/">Crear bóveda</a></li>
+                            <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Listar bóvedas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Propietario
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tasks/create/">Crear propietario</a></li>
+                            <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Listar propietarios</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Familiar del Difunto
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tasks/create/">Crear familiar del difunto</a></li>
+                            <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Listar familiares</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Difunto
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tasks/create/">Crear difunto</a></li>
+                            <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Listar Difuntos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Tareas
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/tasks/create/">Create task</a></li>
@@ -82,10 +88,10 @@
                         <a href="/signin" class="nav-link">Ingresar</a>
                     </li>
                     {% endif %}
-                    
+
                 </ul>
             </div>
-            
+
         </div>
     </nav>
 

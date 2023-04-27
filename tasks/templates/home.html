@@ -4,19 +4,28 @@
 
 <main class="container py-5">
     <section class="card card-body">
-        <h1 class="display-1 text-center">Sistema Cementerio Duitama</h1>
+        {% if user.is_authenticated %}
+        <h1 class="display-2 text-center">¡Bienvenido al Sistema</h1>
+        <h1 class="display-2 text-center">Cementerio Duitama!</h1>
+        {% else %}
+        <h1 class="display-2 text-center">Sistema Cementerio Duitama</h1>
+        {% endif %}
         <p>El sistema Cementerio Duitama permite realizar el seguimiento y control de la información manejada por el
             cementerio de la ciudad de Duitama.
             El sistema permite realizar las acciones de ingresar al sistema, salir del sistema, consultar, registrar,
             actualizar y eliminar la información manejada por la oficina de administración del sistema, como lo son:
-            <ul>
-                <li>Datos del difunto</li>
-                <li>Datos del familiar del difunto</li>
-                <li>Datos de la Bóveda</li>
-                <li>Datos del propietario de la Bóveda</li>
-            </ul>
-            Aportando versatilidad y seguridad a cada una de las personas que requieran realizar tramites en la oficina de administración del cementerio de Duitama.
+        <ul>
+            <li>Datos del difunto</li>
+            <li>Datos del familiar del difunto</li>
+            <li>Datos de la Bóveda</li>
+            <li>Datos del propietario de la Bóveda</li>
+        </ul>
+        Aportando versatilidad y seguridad a cada una de las personas que requieran realizar tramites en la oficina de
+        administración del cementerio de Duitama.
         </p>
+        {% if user.is_authenticated %}
+        
+        {% else %}
         <div class="text-center">
             <a class="btn btn-secondary" href="/signin/">
                 Ingresar
@@ -25,6 +34,7 @@
                 Registrarse
             </a>
         </div>
+        {% endif %}
     </section>
 </main>
 
