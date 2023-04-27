@@ -14,3 +14,12 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title + ' -by ' + self.user.username
+
+
+class Propietario(models.Model):
+    nombresCompletos = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
+    telefonoAuxiliar = models.CharField(max_length=100, null=True, blank=True)
+    direccion = models.CharField(max_length=100)
+    ciudad = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
