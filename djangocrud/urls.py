@@ -24,6 +24,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('tasks_completed/', views.tasks_completed, name='tasks_completed'),
     path('tasks/<int:task_id>/complete', views.complete_task, name='complete_task'),
+    #tasks
     path('tasks/create/', views.create_task, name='create_task'),
     path('tasks/', views.tasks, name='tasks'),
     path('tasks/<int:task_id>/', views.task_detail, name='task_detail'),
@@ -41,7 +42,7 @@ urlpatterns = [
     # path('difunto/<int:difunto_id>/', views.difunto_detail, name='difunto_detail'),
     # path('difunto/<int:difunto_id>/update', views.difunto_detail, name='update_difunto'),
     # path('difunto/<int:difunto_id>/delete', views.delete_difunto, name='delete_difunto'),
-    # #familiarDifunto
+    #familiarDifunto
     # path('familiarDifunto/create/', views.create_familiarDifunto, name='create_familiarDifunto'),
     # path('familiarDifunto/', views.familiarDifunto, name='familiarDifunto'),
     # path('familiarDifunto/<int:familiarDifunto_id>/', views.familiarDifunto_detail, name='familiarDifunto_detail'),

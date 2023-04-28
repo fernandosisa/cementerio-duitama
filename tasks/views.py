@@ -42,15 +42,21 @@ def signup(request):
         })
 
 @login_required
-def tasks(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'tasks.html', {'tasks': tasks})
+def complete_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.datecompleted = timezone.now()
+        task.save()
+        return redirect('tasks')
+
+
 
 @login_required
 def tasks_completed(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'tasks.html', {'tasks': tasks})
 
+# ------------------ tasks---------- 
 @login_required
 def create_task(request):
     if request.method == 'GET':
@@ -71,6 +77,10 @@ def create_task(request):
                 'error': 'Please provide valid data'
             })
 
+@login_required
+def tasks(request):
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
+    return render(request, 'tasks.html', {'tasks': tasks})
 
 @login_required
 def task_detail(request, task_id):
@@ -89,13 +99,6 @@ def task_detail(request, task_id):
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task'})
 
 
-@login_required
-def complete_task(request, task_id):
-    task = get_object_or_404(Task, pk=task_id, user=request.user)
-    if request.method == 'POST':
-        task.datecompleted = timezone.now()
-        task.save()
-        return redirect('tasks')
 
 @login_required
 def delete_task(request, task_id):
