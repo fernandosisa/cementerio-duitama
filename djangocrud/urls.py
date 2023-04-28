@@ -49,8 +49,8 @@ urlpatterns = [
     # path('familiarDifunto/<int:familiarDifunto_id>/update', views.familiarDifunto_detail, name='update_familiarDifunto'),
     # path('familiarDifunto/<int:familiarDifunto_id>/delete', views.delete_familiarDifunto, name='delete_familiarDifunto'),
     # #propietario
-    # path('propietario/create/', views.create_propietario, name='create_propietario'),
-    # path('propietario/', views.propietario, name='propietario'),
+    path('propietario/create/', views.create_propietario, name='create_propietario'),
+    path('propietario/', views.propietarios, name='propietarios'),
     # path('propietario/<int:propietario_id>/', views.propietario_detail, name='propietario_detail'),
     # path('propietario/<int:propietario_id>/update', views.propietario_detail, name='update_propietario'),
     # path('propietario/<int:propietario_id>/delete', views.delete_propietario, name='delete_propietario'),
