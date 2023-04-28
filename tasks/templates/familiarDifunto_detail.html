@@ -4,10 +4,10 @@
     <main class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <h1 class="text-secondary">{{propietario.title}}</h1>
+                <h1 class="text-secondary">{{familiarDifunto.title}}</h1>
                 {{error}}
                 <div class="mt-4">
-                    <form action="{% url 'update_propietario' propietario.id %}" method="POST">
+                    <form action="{% url 'update_familiarDifunto' familiarDifunto.id %}" method="POST" >
                         {% csrf_token %}
                         {{form.as_p}}
                         <button class="btn btn-primary">
@@ -15,7 +15,7 @@
                         </button>
                     </form>
                     <div class="mt-2">
-                        <form action="{% url 'delete_propietario' propietario.id %}" method="POST">
+                        <form action="{% url 'delete_familiarDifunto' familiarDifunto.id %}" method="POST">
                             {% csrf_token %}
                             <button class="btn btn-danger">
                                 Eliminar

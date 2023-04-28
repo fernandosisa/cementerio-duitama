@@ -45,6 +45,7 @@ def signup(request):
             'error': 'Password do not match'
         })
 
+
 @login_required
 def complete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -54,13 +55,15 @@ def complete_task(request, task_id):
         return redirect('tasks')
 
 
-
 @login_required
 def tasks_completed(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    tasks = Task.objects.filter(
+        user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'tasks.html', {'tasks': tasks})
 
-# ----------------------------------- tasks--------------------------------------- 
+# ----------------------------------- tasks---------------------------------------
+
+
 @login_required
 def create_task(request):
     if request.method == 'GET':
@@ -81,10 +84,12 @@ def create_task(request):
                 'error': 'Please provide valid data'
             })
 
+
 @login_required
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {'tasks': tasks})
+
 
 @login_required
 def task_detail(request, task_id):
@@ -97,11 +102,10 @@ def task_detail(request, task_id):
         try:
             task = get_object_or_404(Task, pk=task_id, user=request.user)
             form = TaskForm(request.POST, instance=task)
-            form.save() # aqui actualiza mi tarea
+            form.save()  # aqui actualiza mi tarea
             return redirect('tasks')
         except ValueError:
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task'})
-
 
 
 @login_required
@@ -110,8 +114,10 @@ def delete_task(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
-    
-# ----------------------------------- Propietario--------------------------------------- 
+
+# ----------------------------------- Propietario---------------------------------------
+
+
 @login_required
 def create_propietario(request):
     if request.method == 'GET':
@@ -132,23 +138,27 @@ def create_propietario(request):
                 'error': 'Please provide valid data'
             })
 
+
 @login_required
 def propietarios(request):
     propietarios = Propietario.objects.filter(user=request.user)
     return render(request, 'propietarios.html', {'propietarios': propietarios})
 
+
 @login_required
 def propietario_detail(request, propietario_id):
     if request.method == 'GET':
         # propietario = propietario.objects.get(pk=propietario_id)
-        propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+        propietario = get_object_or_404(
+            Propietario, pk=propietario_id, user=request.user)
         form = PropietarioForm(instance=propietario)
         return render(request, 'propietario_detail.html', {'propietario': propietario, 'form': form})
     else:
         try:
-            propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+            propietario = get_object_or_404(
+                Propietario, pk=propietario_id, user=request.user)
             form = PropietarioForm(request.POST, instance=propietario)
-            form.save() # aqui actualiza mi tarea
+            form.save()  # aqui actualiza mi tarea
             return redirect('propietarios')
         except ValueError:
             return render(request, 'propietario_detail.html', {'propietario': propietario, 'form': form, 'error': 'Error updating propietario'})
@@ -156,12 +166,15 @@ def propietario_detail(request, propietario_id):
 
 @login_required
 def delete_propietario(request, propietario_id):
-    propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+    propietario = get_object_or_404(
+        Propietario, pk=propietario_id, user=request.user)
     if request.method == 'POST':
         propietario.delete()
         return redirect('propietarios')
-    
-# ----------------------------------- familiarDifunto--------------------------------------- 
+
+# ----------------------------------- familiarDifunto---------------------------------------
+
+
 @login_required
 def create_familiarDifunto(request):
     if request.method == 'GET':
@@ -182,38 +195,43 @@ def create_familiarDifunto(request):
                 'error': 'Please provide valid data'
             })
 
+
 @login_required
 def familiaresDifunto(request):
     familiaresDifunto = FamiliarDifunto.objects.filter(user=request.user)
     return render(request, 'familiaresDifunto.html', {'familiaresDifunto': familiaresDifunto})
 
-# @login_required
-# def task_detail(request, task_id):
-#     if request.method == 'GET':
-#         # task = Task.objects.get(pk=task_id)
-#         task = get_object_or_404(Task, pk=task_id, user=request.user)
-#         form = TaskForm(instance=task)
-#         return render(request, 'task_detail.html', {'task': task, 'form': form})
-#     else:
-#         try:
-#             task = get_object_or_404(Task, pk=task_id, user=request.user)
-#             form = TaskForm(request.POST, instance=task)
-#             form.save() # aqui actualiza mi tarea
-#             return redirect('tasks')
-#         except ValueError:
-#             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task'})
+
+@login_required
+def familiarDifunto_detail(request, familiarDifunto_id):
+    if request.method == 'GET':
+        # familiarDifunto = familiarDifunto.objects.get(pk=familiarDifunto_id)
+        familiarDifunto = get_object_or_404(
+            FamiliarDifunto, pk=familiarDifunto_id, user=request.user)
+        form = FamiliarDifuntoForm(instance=familiarDifunto)
+        return render(request, 'familiarDifunto_detail.html', {'familiarDifunto': familiarDifunto, 'form': form})
+    else:
+        try:
+            familiarDifunto = get_object_or_404(
+                FamiliarDifunto, pk=familiarDifunto_id, user=request.user)
+            form = FamiliarDifuntoForm(request.POST, instance=familiarDifunto)
+            form.save()  # aqui actualiza mi tarea
+            return redirect('familiaresDifunto')
+        except ValueError:
+            return render(request, 'familiarDifunto_detail.html', {'familiarDifunto': familiarDifunto, 'form': form, 'error': 'Error updating familiarDifunto'})
 
 
+@login_required
+def delete_familiarDifunto(request, familiarDifunto_id):
+    familiarDifunto = get_object_or_404(
+        FamiliarDifunto, pk=familiarDifunto_id, user=request.user)
+    if request.method == 'POST':
+        familiarDifunto.delete()
+        return redirect('familiaresDifunto')
 
-# @login_required
-# def delete_task(request, task_id):
-#     task = get_object_or_404(Task, pk=task_id, user=request.user)
-#     if request.method == 'POST':
-#         task.delete()
-#         return redirect('tasks')
-    
-# ----------------------------------- Boveda--------------------------------------- 
-# ----------------------------------- Difunto--------------------------------------- 
+# ----------------------------------- Boveda---------------------------------------
+# ----------------------------------- Difunto---------------------------------------
+
 
 @login_required
 def signout(request):

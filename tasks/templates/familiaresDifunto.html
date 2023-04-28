@@ -7,7 +7,7 @@
             <h1 class="text-center display-3 py-5">Lista familiares Difunto</h1>
             <ul class="list-group">
                 {% for familiarDifunto in familiaresDifunto %}
-                <a href="#" class="list-group-item">
+                <a href="{% url 'familiarDifunto_detail' familiarDifunto.id %}" class="list-group-item">
                     <header class="d-flex justify-content-between">
                         <!-- justify-content-between es para dejar el titulo al lado -->
                         <h1 class="fw-bold">{{familiarDifunto.nombresCompletos}}</h1>
