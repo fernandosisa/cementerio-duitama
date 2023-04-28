@@ -43,8 +43,8 @@ urlpatterns = [
     # path('difunto/<int:difunto_id>/update', views.difunto_detail, name='update_difunto'),
     # path('difunto/<int:difunto_id>/delete', views.delete_difunto, name='delete_difunto'),
     #familiarDifunto
-    # path('familiarDifunto/create/', views.create_familiarDifunto, name='create_familiarDifunto'),
-    # path('familiarDifunto/', views.familiarDifunto, name='familiarDifunto'),
+    path('familiarDifunto/create/', views.create_familiarDifunto, name='create_familiarDifunto'),
+    path('familiaresDifunto/', views.familiaresDifunto, name='familiaresDifunto'),
     # path('familiarDifunto/<int:familiarDifunto_id>/', views.familiarDifunto_detail, name='familiarDifunto_detail'),
     # path('familiarDifunto/<int:familiarDifunto_id>/update', views.familiarDifunto_detail, name='update_familiarDifunto'),
     # path('familiarDifunto/<int:familiarDifunto_id>/delete', views.delete_familiarDifunto, name='delete_familiarDifunto'),

@@ -163,30 +163,30 @@ def propietarios(request):
 #         return redirect('tasks')
     
 # ----------------------------------- familiarDifunto--------------------------------------- 
-# @login_required
-# def create_task(request):
-#     if request.method == 'GET':
-#         return render(request, 'create_task.html', {
-#             'form': TaskForm
-#         })
-#     else:
-#         try:
-#             form = TaskForm(request.POST)
-#             new_task = form.save(commit=False)
-#             new_task.user = request.user
-#             new_task.save()  # guarda los datos dentro de la BD
-#             # print(request.POST)
-#             return redirect('tasks')
-#         except ValueError:
-#             return render(request, 'create_task.html', {
-#                 'form': TaskForm,
-#                 'error': 'Please provide valid data'
-#             })
+@login_required
+def create_familiarDifunto(request):
+    if request.method == 'GET':
+        return render(request, 'create_familiarDifunto.html', {
+            'form': FamiliarDifuntoForm
+        })
+    else:
+        try:
+            form = FamiliarDifuntoForm(request.POST)
+            new_familiarDifunto = form.save(commit=False)
+            new_familiarDifunto.user = request.user
+            new_familiarDifunto.save()  # guarda los datos dentro de la BD
+            # print(request.POST)
+            return redirect('familiaresDifunto')
+        except ValueError:
+            return render(request, 'create_familiarDifunto.html', {
+                'form': FamiliarDifuntoForm,
+                'error': 'Please provide valid data'
+            })
 
-# @login_required
-# def tasks(request):
-#     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-#     return render(request, 'tasks.html', {'tasks': tasks})
+@login_required
+def familiaresDifunto(request):
+    familiaresDifunto = FamiliarDifunto.objects.filter(user=request.user)
+    return render(request, 'familiaresDifunto.html', {'familiaresDifunto': familiaresDifunto})
 
 # @login_required
 # def task_detail(request, task_id):

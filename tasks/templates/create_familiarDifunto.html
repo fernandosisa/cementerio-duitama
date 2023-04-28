@@ -4,9 +4,9 @@
 <main class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-5">
-            <h1>Crear familiar difunto</h1>
+            <h1>Crear Familiar Difunto</h1>
             {{error}}
-            <form action="/tasks/create/" method="POST" class="card card-body">
+            <form action="/familiarDifunto/create/" method="POST" class="card card-body">
                 {% csrf_token %}
                 {{form}}
                 <button class="btn btn-primary">
