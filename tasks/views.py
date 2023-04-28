@@ -137,30 +137,29 @@ def propietarios(request):
     propietarios = Propietario.objects.filter(user=request.user)
     return render(request, 'propietarios.html', {'propietarios': propietarios})
 
-# @login_required
-# def task_detail(request, task_id):
-#     if request.method == 'GET':
-#         # task = Task.objects.get(pk=task_id)
-#         task = get_object_or_404(Task, pk=task_id, user=request.user)
-#         form = TaskForm(instance=task)
-#         return render(request, 'task_detail.html', {'task': task, 'form': form})
-#     else:
-#         try:
-#             task = get_object_or_404(Task, pk=task_id, user=request.user)
-#             form = TaskForm(request.POST, instance=task)
-#             form.save() # aqui actualiza mi tarea
-#             return redirect('tasks')
-#         except ValueError:
-#             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task'})
+@login_required
+def propietario_detail(request, propietario_id):
+    if request.method == 'GET':
+        # propietario = propietario.objects.get(pk=propietario_id)
+        propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+        form = PropietarioForm(instance=propietario)
+        return render(request, 'propietario_detail.html', {'propietario': propietario, 'form': form})
+    else:
+        try:
+            propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+            form = PropietarioForm(request.POST, instance=propietario)
+            form.save() # aqui actualiza mi tarea
+            return redirect('propietarios')
+        except ValueError:
+            return render(request, 'propietario_detail.html', {'propietario': propietario, 'form': form, 'error': 'Error updating propietario'})
 
 
-
-# @login_required
-# def delete_task(request, task_id):
-#     task = get_object_or_404(Task, pk=task_id, user=request.user)
-#     if request.method == 'POST':
-#         task.delete()
-#         return redirect('tasks')
+@login_required
+def delete_propietario(request, propietario_id):
+    propietario = get_object_or_404(Propietario, pk=propietario_id, user=request.user)
+    if request.method == 'POST':
+        propietario.delete()
+        return redirect('propietarios')
     
 # ----------------------------------- familiarDifunto--------------------------------------- 
 @login_required
