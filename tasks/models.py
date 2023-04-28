@@ -33,11 +33,14 @@ class FamiliarDifunto(models.Model):
     ciudad = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
 class Boveda(models.Model):
     ubicacion = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)
     idPropietario = models.ForeignKey(Propietario, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+
 
 class Difunto(models.Model):
     nombresCompletos = models.CharField(max_length=100)
