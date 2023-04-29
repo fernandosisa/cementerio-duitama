@@ -261,6 +261,34 @@ def bovedas(request):
     bovedas = Boveda.objects.filter(user=request.user)
     return render(request, 'bovedas.html', {'bovedas': bovedas})
 
+
+@login_required
+def boveda_detail(request, boveda_id):
+    if request.method == 'GET':
+        # boveda = boveda.objects.get(pk=boveda_id)
+        boveda = get_object_or_404(
+            Boveda, pk=boveda_id, user=request.user)
+        form = BovedaForm(instance=boveda)
+        return render(request, 'boveda_detail.html', {'boveda': boveda, 'form': form})
+    else:
+        try:
+            boveda = get_object_or_404(
+                Boveda, pk=boveda_id, user=request.user)
+            form = BovedaForm(request.POST, instance=boveda)
+            form.save()  # aqui actualiza mi tarea
+            return redirect('bovedas')
+        except ValueError:
+            return render(request, 'boveda_detail.html', {'boveda': boveda, 'form': form, 'error': 'Error updating boveda'})
+
+
+@login_required
+def delete_boveda(request, boveda_id):
+    boveda = get_object_or_404(
+        Boveda, pk=boveda_id, user=request.user)
+    if request.method == 'POST':
+        boveda.delete()
+        return redirect('bovedas')
+
 # ----------------------------------- Difunto---------------------------------------
 
 @login_required
@@ -283,6 +311,37 @@ def create_difunto(request):
                 'error': 'Please provide valid data'
             })
 
+
+
+@login_required
+def difunto_detail(request, difunto_id):
+    if request.method == 'GET':
+        # difunto = difunto.objects.get(pk=difunto_id)
+        difunto = get_object_or_404(
+            Difunto, pk=difunto_id, user=request.user)
+        form = DifuntoForm(instance=difunto)
+        return render(request, 'difunto_detail.html', {'difunto': difunto, 'form': form})
+    else:
+        try:
+            difunto = get_object_or_404(
+                Difunto, pk=difunto_id, user=request.user)
+            form = DifuntoForm(request.POST, instance=difunto)
+            form.save()  # aqui actualiza mi tarea
+            return redirect('difuntos')
+        except ValueError:
+            return render(request, 'difunto_detail.html', {'difunto': difunto, 'form': form, 'error': 'Error updating difunto'})
+
+
+@login_required
+def delete_difunto(request, difunto_id):
+    difunto = get_object_or_404(
+        Difunto, pk=difunto_id, user=request.user)
+    if request.method == 'POST':
+        difunto.delete()
+        return redirect('difuntos')
+
+
+# ----------------------------termina difunto------------------
 
 @login_required
 def difuntos(request):

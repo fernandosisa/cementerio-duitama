@@ -33,9 +33,15 @@ urlpatterns = [
     #boveda
     path('boveda/create/', views.create_boveda, name='create_boveda'),
     path('boveda/', views.bovedas, name='bovedas'),
+    path('bovedas/<int:boveda_id>/', views.boveda_detail, name='boveda_detail'),
+    path('bovedas/<int:boveda_id>/update', views.boveda_detail, name='update_boveda'),
+    path('bovedas/<int:boveda_id>/delete', views.delete_boveda, name='delete_boveda'),
     # #difunto
     path('difunto/create/', views.create_difunto, name='create_difunto'),
     path('difunto/', views.difuntos, name='difuntos'),
+    path('difuntos/<int:difunto_id>/', views.difunto_detail, name='difunto_detail'),
+    path('difuntos/<int:difunto_id>/update', views.difunto_detail, name='update_difunto'),
+    path('difuntos/<int:difunto_id>/delete', views.delete_difunto, name='delete_difunto'),
     #familiarDifunto
     path('familiarDifunto/create/', views.create_familiarDifunto, name='create_familiarDifunto'),
     path('familiaresDifunto/', views.familiaresDifunto, name='familiaresDifunto'),
