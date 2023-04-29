@@ -6,11 +6,15 @@ from django.http import HttpResponse
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TaskForm
-from .forms import PropietarioForm
 from .forms import FamiliarDifuntoForm
+from .forms import PropietarioForm
+from .forms import BovedaForm
+from .forms import DifuntoForm
 from .models import Task
-from .models import Propietario
 from .models import FamiliarDifunto
+from .models import Propietario
+from .models import Boveda
+from .models import Difunto
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -230,8 +234,60 @@ def delete_familiarDifunto(request, familiarDifunto_id):
         return redirect('familiaresDifunto')
 
 # ----------------------------------- Boveda---------------------------------------
+
+@login_required
+def create_boveda(request):
+    if request.method == 'GET':
+        return render(request, 'create_boveda.html', {
+            'form': BovedaForm
+        })
+    else:
+        try:
+            form = BovedaForm(request.POST)
+            new_boveda = form.save(commit=False)
+            new_boveda.user = request.user
+            new_boveda.save()  # guarda los datos dentro de la BD
+            # print(request.POST)
+            return redirect('bovedas')
+        except ValueError:
+            return render(request, 'create_boveda.html', {
+                'form': BovedaForm,
+                'error': 'Please provide valid data'
+            })
+
+
+@login_required
+def bovedas(request):
+    bovedas = Boveda.objects.filter(user=request.user)
+    return render(request, 'bovedas.html', {'bovedas': bovedas})
+
 # ----------------------------------- Difunto---------------------------------------
 
+@login_required
+def create_difunto(request):
+    if request.method == 'GET':
+        return render(request, 'create_difunto.html', {
+            'form': DifuntoForm
+        })
+    else:
+        try:
+            form = DifuntoForm(request.POST)
+            new_difunto = form.save(commit=False)
+            new_difunto.user = request.user
+            new_difunto.save()  # guarda los datos dentro de la BD
+            # print(request.POST)
+            return redirect('difuntos')
+        except ValueError:
+            return render(request, 'create_difunto.html', {
+                'form': DifuntoForm,
+                'error': 'Please provide valid data'
+            })
+
+
+@login_required
+def difuntos(request):
+    difuntos = Difunto.objects.filter(user=request.user)
+    return render(request, 'difuntos.html', {'difuntos': difuntos})
 
 @login_required
 def signout(request):

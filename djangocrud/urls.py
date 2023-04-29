@@ -31,17 +31,11 @@ urlpatterns = [
     path('tasks/<int:task_id>/update', views.task_detail, name='update_task'),
     path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
     #boveda
-    # path('boveda/create/', views.create_boveda, name='create_boveda'),
-    # path('boveda/', views.boveda, name='boveda'),
-    # path('boveda/<int:boveda_id>/', views.boveda_detail, name='boveda_detail'),
-    # path('boveda/<int:boveda_id>/update', views.boveda_detail, name='update_boveda'),
-    # path('boveda/<int:boveda_id>/delete', views.delete_boveda, name='delete_boveda'),
+    path('boveda/create/', views.create_boveda, name='create_boveda'),
+    path('boveda/', views.bovedas, name='bovedas'),
     # #difunto
-    # path('difunto/create/', views.create_difunto, name='create_difunto'),
-    # path('difunto/', views.difunto, name='difunto'),
-    # path('difunto/<int:difunto_id>/', views.difunto_detail, name='difunto_detail'),
-    # path('difunto/<int:difunto_id>/update', views.difunto_detail, name='update_difunto'),
-    # path('difunto/<int:difunto_id>/delete', views.delete_difunto, name='delete_difunto'),
+    path('difunto/create/', views.create_difunto, name='create_difunto'),
+    path('difunto/', views.difuntos, name='difuntos'),
     #familiarDifunto
     path('familiarDifunto/create/', views.create_familiarDifunto, name='create_familiarDifunto'),
     path('familiaresDifunto/', views.familiaresDifunto, name='familiaresDifunto'),

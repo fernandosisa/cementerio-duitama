@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-5">Lista difuntos</h1>
+            <ul class="list-group">
+                {% for difunto in difuntos%}
+                <a href="#" class="list-group-item">
+                    <header class="d-flex justify-content-between">
+                        <!-- justify-content-between es para dejar el titulo al lado -->
+                        <h1 class="fw-bold">{{difunto.nombresCompletos}}</h1>
+                        <p>{{difunto.user.username}}</p>
+                    </header>
+                    <p>{{difunto.fechaNacimiento}}</p>
+                    <p>{{difunto.fechaDefuncion}}</p>
+                    <p>{{difunto.fechaDejoEnBoveda}}</p>
+                    <p>{{difunto.fechaFinAlquiler}}</p>
+                    <p>{{difunto.idBoveda}}</p>
+                    <p>{{difunto.idFamiliar}}</p>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

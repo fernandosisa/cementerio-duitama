@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-5">Lista bovedas </h1>
+            <ul class="list-group">
+                {% for boveda in bovedas %}
+                <a href="#" class="list-group-item">
+                    <header class="d-flex justify-content-between">
+                        <!-- justify-content-between es para dejar el titulo al lado -->
+                        <h1 class="fw-bold">{{boveda.ubicacion}}</h1>
+                        <p>{{boveda.user.username}}</p>
+                    </header>
+                    <p>{{boveda.estado}}</p>
+                    <p>{{boveda.idPropietario}}</p>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
